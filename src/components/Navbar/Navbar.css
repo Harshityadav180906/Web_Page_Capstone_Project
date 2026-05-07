@@ -1,0 +1,120 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 1000;
+  transition: all 0.4s ease;
+  background: transparent;
+}
+
+.navbar.scrolled {
+  padding: 12px 0;
+  background: rgba(15, 23, 42, 0.8); /* Dark Slate */
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.nav-logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.nav-logo span {
+  color: #00f2ff; /* Neon Cyan */
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #cbd5e1;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  transition: 0.3s;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #00f2ff;
+}
+
+/* Hover underline animation */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #7000ff; /* Electric Violet */
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Mobile Menu Icon */
+.mobile-menu-icon {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.line {
+  width: 25px;
+  height: 2px;
+  background: white;
+  transition: 0.3s;
+}
+
+/* Responsive Logic */
+@media (max-width: 768px) {
+  .mobile-menu-icon {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    transition: 0.5s ease;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  /* Hamburger to X animation */
+  .line.open:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .line.open:nth-child(2) { opacity: 0; }
+  .line.open:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+}

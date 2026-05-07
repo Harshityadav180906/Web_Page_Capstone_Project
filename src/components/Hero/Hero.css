@@ -1,0 +1,147 @@
+.hero-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-color: #020617; /* Deep Slate Black */
+  text-align: center;
+}
+
+/* Background Glow */
+.hero-bg-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(112, 0, 255, 0.2) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: 1;
+}
+
+.hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+}
+
+.hero-content {
+  z-index: 10;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(0, 242, 255, 0.1);
+  border: 1px solid #00f2ff;
+  color: #00f2ff;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+/* GLITCH EFFECT */
+.hero-title {
+  font-size: 5rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 8px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.hero-title::before,
+.hero-title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #020617;
+}
+
+.hero-title::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff00c1;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.hero-title::after {
+  left: -2px;
+  text-shadow: -2px 0 #00f2ff;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+.hero-subtitle {
+  color: #94a3b8;
+  font-size: 1.2rem;
+  margin: 20px 0 40px;
+  line-height: 1.6;
+}
+
+/* BUTTONS */
+.hero-cta {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btn-glow {
+  background: #7000ff;
+  color: white;
+  padding: 14px 32px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(112, 0, 255, 0.4);
+}
+
+.btn-glow:hover {
+  background: #00f2ff;
+  color: #000;
+  box-shadow: 0 0 30px rgba(0, 242, 255, 0.6);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-outline:hover {
+  border-color: #7000ff;
+  background: rgba(112, 0, 255, 0.05);
+}
+
+/* Animations */
+@keyframes glitch-anim {
+  0% { clip: rect(10px, 9999px, 20px, 0); }
+  20% { clip: rect(40px, 9999px, 50px, 0); }
+  100% { clip: rect(80px, 9999px, 90px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(15px, 9999px, 30px, 0); }
+  25% { clip: rect(60px, 9999px, 70px, 0); }
+  100% { clip: rect(5px, 9999px, 15px, 0); }
+}
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 3rem; }
+  .hero-cta { flex-direction: column; }
+}
